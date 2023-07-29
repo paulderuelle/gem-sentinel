@@ -1,0 +1,2 @@
+class ProjectGemsController < ApplicationController
+end

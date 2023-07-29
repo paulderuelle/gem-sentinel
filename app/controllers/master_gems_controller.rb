@@ -1,0 +1,2 @@
+class MasterGemsController < ApplicationController
+end
