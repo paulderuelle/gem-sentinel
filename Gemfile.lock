@@ -72,6 +72,7 @@ GEM
       msgpack (~> 1.2)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
     debug (1.8.0)
@@ -160,6 +161,8 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis-client (0.14.1)
+      connection_pool
     reline (0.3.7)
       io-console (~> 0.5)
     responders (3.1.0)
@@ -190,6 +193,13 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sidekiq (7.1.2)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.14.0)
+    sidekiq-failures (1.0.4)
+      sidekiq (>= 4.0.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -234,6 +244,8 @@ DEPENDENCIES
   rails (~> 7.0.6)
   rspec-rails (~> 6.0)
   sassc-rails (~> 2.1)
+  sidekiq (~> 7.1)
+  sidekiq-failures (~> 1.0)
   sprockets-rails
   stimulus-rails
   turbo-rails

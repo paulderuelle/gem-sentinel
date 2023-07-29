@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
+
+  root "projects#index"
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  root "projects#index"
+  namespace :api do
+    namespace :v1 do
+      resources :projects
+    end
+  end
+
+  mount Sidekiq::Web => '/sidekiq'
 end

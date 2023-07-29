@@ -1,7 +1,8 @@
-class ProjectsController < ApplicationController
+class Api::V1::ProjectsController < ApplicationController
     before_action :redirect_unlogged_users
     def index
-
+        @projects = Project.all
+        render json: @projects.to_json
     end
 
     private
