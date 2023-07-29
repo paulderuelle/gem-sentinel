@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import ProjectList from './project_list.jsx'
+// import ProjectGemsList from './project_gems_list.jsx'
+// import ProjectGemInfo from './project_gem_info.jsx'
 
 function Containers() {
   const initialState = [
@@ -35,12 +38,10 @@ function Containers() {
             top: container.top,
             left: container.left,
             display: container.visible ? 'block' : 'none',
-          }}
-        >
+          }}>
           {container.id}
-          {index < containers.length - 1 && (
-            <button onClick={() => clickForward(index + 1)}>Display next</button>
-          )}
+          {container.id === 'index_projects_container' && <ProjectList />}
+          {index < containers.length - 1 && (<button onClick={() => clickForward(index + 1)}>Display next</button>)}
         </div>
       ))}
       <button onClick={resetContainers}>Back</button>
