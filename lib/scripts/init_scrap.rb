@@ -45,7 +45,7 @@ def feed_first_time(gems)
   db_data
 end
 
-gems = MasterGem.pluck(:name)
+gems = MasterGem.pluck(:name)[1000..1500]
 db_data = feed_first_time(gems)
 db_data.each do |name, info|
   master_gem = MasterGem.find_by(name: name)
