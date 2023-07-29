@@ -147,7 +147,7 @@ module GemReleases
     Parallel.each(gems, in_threads: 4) do |gem_name, gem_info|
       counter_gems += 1
       name = gem_name
-      gem_url = "https://rubygems.org/api/v1/gems/#{name}.json"
+      gem_url = "https://rubygems.org/api/v1/gems/active_storage_db.json"
       pages = JSON.parse(URI.open("#{gem_url}").read)
       if pages['changelog_uri']
         changelog_url = pages['changelog_uri']
