@@ -114,58 +114,27 @@ module GemReleases
       pages = gems_pages(gem_info[:gem_url])
       if pages['changelog_uri']
         changelog_url = pages['changelog_uri']
+        documentation_url = nil
         counter_changelog += 1
       elsif pages['documentation_uri']
-        changelog_url = pages['documentation_uri']
+        documentation_url = pages['documentation_uri']
+        changelog_url = nil
         counter_documentation += 1
       else
         counter_nil += 1
         changelog_url = nil
+        documentation_url = nil
         puts "No changelog or documentation for #{name}"
         next
       end
       db_data[name] = {
         version: version,
         gem_url: gem_url,
-        changelog_url: changelog_url
+        changelog_url: changelog_url,
+        documentation_url: documentation_url
       }
     end
 
-    puts "Total gems: #{counter_gems}"
-    puts "Total changelog: #{counter_changelog}"
-    puts "Total documentation: #{counter_documentation}"
-    puts "Total nil: #{counter_nil}"
-    db_data
-  end
-
-  def self.feed_first_time(gems)
-    db_data = Hash.new(nil)
-    counter_gems = 0
-    counter_changelog = 0
-    counter_documentation = 0
-    counter_nil = 0
-    Parallel.each(gems, in_threads: 4) do |gem_name, gem_info|
-      counter_gems += 1
-      name = gem_name
-      gem_url = "https://rubygems.org/api/v1/gems/active_storage_db.json"
-      pages = JSON.parse(URI.open("#{gem_url}").read)
-      if pages['changelog_uri']
-        changelog_url = pages['changelog_uri']
-        counter_changelog += 1
-      elsif pages['documentation_uri']
-        changelog_url = pages['documentation_uri']
-        counter_documentation += 1
-      else
-        counter_nil += 1
-        changelog_url = nil
-        puts "No changelog or documentation for #{name}"
-        next
-      end
-      db_data[name] = {
-        version: pages['version'],
-        changelog_url: changelog_url
-      }
-    end
     puts "Total gems: #{counter_gems}"
     puts "Total changelog: #{counter_changelog}"
     puts "Total documentation: #{counter_documentation}"
@@ -175,7 +144,3 @@ module GemReleases
 
   private_class_method :extract_gems_info_from_page, :get_total_pages, :gems_pages, :all_gems_scraper
 end
-
-gems = MasterGem.pluck(:name)
-puts gems
-puts GemReleases.feed_first_time(gems)
