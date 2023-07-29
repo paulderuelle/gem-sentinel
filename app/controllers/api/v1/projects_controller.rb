@@ -3,7 +3,7 @@ class Api::V1::ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    render json: @projects.to_json
+    render json: @projects
   end
 
   def create
@@ -14,6 +14,11 @@ class Api::V1::ProjectsController < ApplicationController
     else
       render json: @project.errors, status: :unprocessable_entity
     end
+  end
+
+  def show
+    project = Project.find(params[:id])
+    render json: { project_id: project.id, project_gemfile_id: project.project_gemfile.id }
   end
 
   private
