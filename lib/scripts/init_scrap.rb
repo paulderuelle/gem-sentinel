@@ -8,7 +8,7 @@ def feed_first_time(gems)
   counter_changelog = 0
   counter_documentation = 0
   counter_nil = 0
-  Parallel.each(gems, in_threads: 4) do |gem_name, gem_info|
+  gels.each do |gem_name, gem_info|
     sleep(0.5)
     counter_gems += 1
     name = gem_name
