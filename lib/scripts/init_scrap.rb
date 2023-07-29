@@ -12,7 +12,6 @@ def feed_first_time(gems)
   documentation_url = nil
 
   Parallel.each(gems, in_threads: 10) do |gem_name, gem_info|
-    sleep(0.5)
     counter_gems += 1
     name = gem_name
     puts name

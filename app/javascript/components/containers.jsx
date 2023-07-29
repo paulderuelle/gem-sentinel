@@ -16,7 +16,8 @@ function Containers() {
   const [selectedProjectGemfileId, setSelectedProjectGemfileId] = useState(null); // Etat qui stocke l'ID du Gemfile
 
   // Mise à jour de la visibilité des containers quand User clique sur un projet
-  const clickProject = (projectId, projectGemfileId) => {
+  const clickProject = (project) => {
+    console.log('project id : ', project.id)
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true },
       { ...prevContainers[1], visible: true },
@@ -24,12 +25,35 @@ function Containers() {
     ]);
 
     // Mise à jour des ID du Projet et du Gemfile lorsqu'ils sont sélectionnés
-    setSelectedProjectId(projectId);
-    setSelectedProjectGemfileId(projectGemfileId);
-    console.log(projectId, projectGemfileId)
+    setSelectedProjectId(project.id);
+
+    getGemfile(project.id)
+      .then((gemfileId) => {
+        console.log('gemfile id : ', gemfileId)
+        setSelectedProjectGemfileId(gemfileId);
+      })
+      .catch((error) => {
+        console.error('Erreur :', error);
+      })
   };
 
-   // Permet de réinitialiser les containers et les ID sélectionnés
+  const testtest = () => {
+    console.log('TEST OK');
+  }
+  
+  const getGemfile = (projectId) => {
+    const getGemfileUrl = `/api/v1/projects/${projectId}`;
+    
+    return fetch(getGemfileUrl)
+    .then((response) => response.json())
+    .then((data) => data)
+      .catch((error) => {
+        console.error('Erreur :', error);
+        throw error;
+      })
+  };
+
+  // Permet de réinitialiser les containers et les ID sélectionnés
   const resetContainers = () => {
     setSelectedProjectId(null);
     setSelectedProjectGemfileId(null);
@@ -51,12 +75,10 @@ function Containers() {
             display: container.visible ? 'block' : 'none',
           }}
         >
-          {container.id}
           {/* Affiche le composant Projects dans le container correspondant avec la fonction clickProject */}
           {container.id === 'index_projects_container' && <Projects clickProject={clickProject} />}
           {/* Affiche le composant ProjectGemfiles dans le container correspondant lorsqu'un projet est sélectionné */}
-          {container.id === 'index_gemfiles_container' && selectedProjectId && selectedProjectGemfileId && (<ProjectGemfiles/>)}
-          {/* projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} */}
+          {container.id === 'index_gemfiles_container' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} testtest={testtest} />}
         </div>
       ))}
       {/* Bouton pour réinitialiser grâce à la fonction resetContainers */}

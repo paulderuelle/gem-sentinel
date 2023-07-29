@@ -2,8 +2,6 @@ puts 'destroying any previous data...'
 ProjectGem.destroy_all
 ProjectGemfile.destroy_all
 Project.destroy_all
-MasterGem.destroy_all
-GemRelease.destroy_all
 User.destroy_all
 
 puts 'generating users...'
@@ -26,8 +24,10 @@ users.each do |user|
   5.times do |i|
     project = Project.create!(name: "Project #{i + 1}", user: user)
 
+
     # Création d'un project_gemfile pour chaque projet
     project_gemfile = ProjectGemfile.create!(content: "Content of Project Gemfile #{i + 1}", project: project)
+
 
     # Création de 5 project_gems pour chaque project_gemfile en associant les master_gems et gem_releases aléatoirement
     5.times do
@@ -41,4 +41,7 @@ users.each do |user|
   end
 end
 
+
 puts 'seeded succesfully!'
+
+
