@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       resources :projects
     end
   end
-
+  
+  
   mount Sidekiq::Web => '/sidekiq'
+  root 'pages#home'
 end
