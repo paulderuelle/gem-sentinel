@@ -1,5 +1,5 @@
 class Api::V1::ProjectsController < ApplicationController
-  # before_action :redirect_unlogged_users
+  before_action :redirect_unlogged_users
 
   def index
     @projects = Project.all

@@ -7,4 +7,7 @@ const productContainer = document.getElementById('main-container');
 const productRoot = createRoot(productContainer);
 
 // Rendu du composant Containers (précédemment importé)
+// if logged
 productRoot.render(<Containers />);
+// else render devise
+// end

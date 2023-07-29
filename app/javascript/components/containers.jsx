@@ -17,7 +17,6 @@ function Containers() {
 
   // Mise à jour de la visibilité des containers quand User clique sur un projet
   const clickProject = (project) => {
-    console.log('project id : ', project.id)
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true },
       { ...prevContainers[1], visible: true },
@@ -37,13 +36,12 @@ function Containers() {
       })
   };
 
-  const testtest = () => {
-    console.log('TEST OK');
+  const futurBouton = () => {
   }
-  
+
   const getGemfile = (projectId) => {
     const getGemfileUrl = `/api/v1/projects/${projectId}`;
-    
+
     return fetch(getGemfileUrl)
     .then((response) => response.json())
     .then((data) => data)
