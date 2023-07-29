@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :projects
   has_many :project_gemfiles, through: :projects
   has_many :project_gems, through: :project_gemfiles
+
+  validates :username, presence: true, uniqueness: true
+  validates :password, presence: true
+  validates :mail_address, presence: true, uniqueness: true
 end
