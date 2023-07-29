@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
