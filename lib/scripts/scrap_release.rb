@@ -152,19 +152,21 @@ module GemReleases
       if pages['changelog_uri']
         changelog_url = pages['changelog_uri']
         counter_changelog += 1
+        puts 'Changelog ok'
       elsif pages['documentation_uri']
         changelog_url = pages['documentation_uri']
         counter_documentation += 1
+        puts 'documentation ok'
       else
         counter_nil += 1
         changelog_url = nil
         puts "No changelog or documentation for #{name}"
         next
       end
-      db_data[name] = {
+      puts (db_data[name] = {
         version: pages['version'],
         changelog_url: changelog_url
-      }
+      })
     end
     puts "Total gems: #{counter_gems}"
     puts "Total changelog: #{counter_changelog}"
