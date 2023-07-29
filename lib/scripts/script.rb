@@ -1,11 +1,28 @@
+require 'uri'
+require 'net/http'
 
-def create_gem_release(version, changelog_page_url, master_gem_id)
-    gem_release = GemRelease.new(version: version, changelog_page_url: changelog_page_url, master_gem_id: master_gem_id)
-    if gem_release.save
-        puts "Realease created successfully!"
-    else
-        puts "Error during the creation of the release : #{gem_release.errors.full_messages.join(', ')}"
-    end
+# Method to extract name, rubygems_page_url and version from a line
+def extract_gem_info(line)
+    name, version = line.match(/^(.+?) \((.+?)\)$/)&.captures
+    { name: name, version: version }
 end
-MasterGem.create!(name: 'gem_exemple', rubygems_page_url: 'https://gemexemple.com')
-create_gem_release('1.0.5', 'https://exemple.com', MasterGem.last.id)
+
+# Persist gem
+def saveGemsIntoDb(gem)
+    masterGem = MasterGem.create!(name: gem[:name], rubygems_page_url: "https://rubygems.org/gems/#{gem[:name]}")
+    GemRelease.create!(version: gem[:version], master_gem_id: masterGem.id)
+end
+
+gemlist_path = File.join(__dir__, 'gemlist.txt')
+
+# Check if gemlist file exist
+if File.exist?(gemlist_path)
+
+    # read the content of the file and do an iteration on each line
+    File.foreach(gemlist_path) do |line|
+        gem_info = extract_gem_info(line.chomp)
+        saveGemsIntoDb(gem_info)
+    end
+else
+    puts "Gemlist doesn't exist."
+end
