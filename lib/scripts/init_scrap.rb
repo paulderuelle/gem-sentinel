@@ -8,6 +8,9 @@ def feed_first_time(gems)
   counter_changelog = 0
   counter_documentation = 0
   counter_nil = 0
+  changelog_url = nil
+  documentation_url = nil
+
   Parallel.each(gems, in_threads: 4) do |gem_name, gem_info|
     sleep(0.5)
     counter_gems += 1
@@ -27,8 +30,6 @@ def feed_first_time(gems)
       changelog_url = nil
     else
       counter_nil += 1
-      changelog_url = nil
-      documentation_url = nil
       puts "No changelog or documentation for #{name}"
       next
     end
@@ -45,7 +46,7 @@ def feed_first_time(gems)
   db_data
 end
 
-gems = MasterGem.pluck(:name)
+gems = MasterGem.pluck(:name)[0..100]
 db_data = feed_first_time(gems)
 db_data.each do |name, info|
   master_gem = MasterGem.find_by(name: name)
