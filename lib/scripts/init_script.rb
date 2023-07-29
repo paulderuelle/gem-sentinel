@@ -1,19 +1,21 @@
 require 'uri'
 require 'net/http'
 
-# Method to extract name, rubygems_page_url and version from a line
+# gemlist is where we stock the return of 'gem list --remote'
+gemlist_path = File.join(__dir__, 'gemlist.txt')
+
+# Method to extract name and version from a line
 def extract_gem_info(line)
     name, version = line.match(/^(.+?) \((.+?)\)$/)&.captures
     { name: name, version: version }
 end
 
-# Persist gem
+# Persist gem and create the first gem_release
 def saveGemsIntoDb(gem)
-    masterGem = MasterGem.create!(name: gem[:name], rubygems_page_url: "https://rubygems.org/gems/#{gem[:name]}")
+    rubygems_page_url = "https://rubygems.org/gems/#{gem[:name]}"
+    masterGem = MasterGem.create!(name: gem[:name], rubygems_page_url: rubygems_page_url)
     GemRelease.create!(version: gem[:version], master_gem_id: masterGem.id)
 end
-
-gemlist_path = File.join(__dir__, 'gemlist.txt')
 
 # Check if gemlist file exist
 if File.exist?(gemlist_path)
