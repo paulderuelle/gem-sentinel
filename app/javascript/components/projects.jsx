@@ -25,7 +25,7 @@ function Projects({ clickProject }) {
       {/* Affiche les projets sous forme de liste avec un listener onClick pour passer les ID Projet et Gemfile*/}
       {projects.map((project) => (
         <li key={project.id} onClick={() => clickProject(project)}>
-          {project.name} - {project.id} - {project.project_gemfile_id}
+          {project.name}
         </li>
       ))}
     </ul>

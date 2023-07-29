@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function ProjectGemfiles({ projectId, projectGemfileId }) {
+function ProjectGemfiles({ projectId, projectGemfileId, testtest }) {
   // État pour conserver la liste des gems récupérées depuis l'API
   const [gems, setGems] = useState([]);
 
@@ -10,9 +10,9 @@ function ProjectGemfiles({ projectId, projectGemfileId }) {
   }, [projectId, projectGemfileId]);
 
   // Effectue la requête API pour récupérer les gems en utilisant les ID Project et Gemfile
-  const getGems = (projectId, projectGemfileId) => {
+  const getGems = () => {
     const getGemsUrl = `/api/v1/projects/${projectId}/project_gemfiles/${projectGemfileId}/project_gems`;
-    console.log(projectId, projectGemfileId)
+    console.log('Api getGems URL : ', getGemsUrl);
     // const getGemsUrl = `/api/v1/projects/1/project_gemfiles/1/project_gems`;
 
     fetch(getGemsUrl)
@@ -28,7 +28,7 @@ function ProjectGemfiles({ projectId, projectGemfileId }) {
       <ul>
         {/* Afficher le name et le status des gems récupérées */}
         {gems.map((gem) => (
-          <li key={gem.id}>
+          <li key={gem.id} onClick={() => testtest()}>
             {gem.name} - {gem.status}
           </li>
         ))}
