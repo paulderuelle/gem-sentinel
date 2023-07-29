@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function ProjectGemfiles({ projectId, projectGemfileId }) {
+function ProjectGemfiles({ projectId, projectGemfileId, testtest }) {
   // État pour conserver la liste des gems récupérées depuis l'API
   const [gems, setGems] = useState([]);
 
@@ -28,7 +28,7 @@ function ProjectGemfiles({ projectId, projectGemfileId }) {
       <ul>
         {/* Afficher le name et le status des gems récupérées */}
         {gems.map((gem) => (
-          <li key={gem.id}>
+          <li key={gem.id} onClick={() => testtest()}>
             {gem.name} - {gem.status}
           </li>
         ))}

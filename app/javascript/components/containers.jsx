@@ -36,6 +36,10 @@ function Containers() {
         console.error('Erreur :', error);
       })
   };
+
+  const testtest = () => {
+    console.log('TEST OK');
+  }
   
   const getGemfile = (projectId) => {
     const getGemfileUrl = `/api/v1/projects/${projectId}`;
@@ -74,7 +78,7 @@ function Containers() {
           {/* Affiche le composant Projects dans le container correspondant avec la fonction clickProject */}
           {container.id === 'index_projects_container' && <Projects clickProject={clickProject} />}
           {/* Affiche le composant ProjectGemfiles dans le container correspondant lorsqu'un projet est sélectionné */}
-          {container.id === 'index_gemfiles_container' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} />}
+          {container.id === 'index_gemfiles_container' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} testtest={testtest} />}
         </div>
       ))}
       {/* Bouton pour réinitialiser grâce à la fonction resetContainers */}
