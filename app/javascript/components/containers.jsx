@@ -17,6 +17,7 @@ function Containers() {
 
   // Mise à jour de la visibilité des containers quand User clique sur un projet
   const clickProject = (projectId, projectGemfileId) => {
+    console.log(projectId, projectGemfileId)
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true },
       { ...prevContainers[1], visible: true },
@@ -55,8 +56,7 @@ function Containers() {
           {/* Affiche le composant Projects dans le container correspondant avec la fonction clickProject */}
           {container.id === 'index_projects_container' && <Projects clickProject={clickProject} />}
           {/* Affiche le composant ProjectGemfiles dans le container correspondant lorsqu'un projet est sélectionné */}
-          {container.id === 'index_gemfiles_container' && selectedProjectId && selectedProjectGemfileId && (<ProjectGemfiles/>)}
-          {/* projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} */}
+          {container.id === 'index_gemfiles_container' && (selectedProjectId && selectedProjectGemfileId) && (<ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} />)}
         </div>
       ))}
       {/* Bouton pour réinitialiser grâce à la fonction resetContainers */}
