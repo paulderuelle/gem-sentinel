@@ -70,3 +70,7 @@ gem "rspec-rails", "~> 6.0"
 gem "devise", "~> 4.9"
 
 gem "sassc-rails", "~> 2.1"
+
+gem "sidekiq", "~> 7.1"
+
+gem "sidekiq-failures", "~> 1.0"
