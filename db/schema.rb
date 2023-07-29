@@ -10,8 +10,69 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_29_041239) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "gem_releases", force: :cascade do |t|
+    t.string "version"
+    t.string "changelog_page_url"
+    t.bigint "master_gem_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["master_gem_id"], name: "index_gem_releases_on_master_gem_id"
+  end
+
+  create_table "master_gems", force: :cascade do |t|
+    t.string "name"
+    t.string "rubygems_page_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "project_gemfiles", force: :cascade do |t|
+    t.text "content"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_gemfiles_on_project_id"
+  end
+
+  create_table "project_gems", force: :cascade do |t|
+    t.bigint "project_gemfile_id", null: false
+    t.bigint "master_gem_id", null: false
+    t.bigint "gem_release_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gem_release_id"], name: "index_project_gems_on_gem_release_id"
+    t.index ["master_gem_id"], name: "index_project_gems_on_master_gem_id"
+    t.index ["project_gemfile_id"], name: "index_project_gems_on_project_gemfile_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "gem_releases", "master_gems"
+  add_foreign_key "project_gemfiles", "projects"
+  add_foreign_key "project_gems", "gem_releases"
+  add_foreign_key "project_gems", "master_gems"
+  add_foreign_key "project_gems", "project_gemfiles"
+  add_foreign_key "projects", "users"
 end

@@ -1,0 +1,2 @@
+class MasterGem < ApplicationRecord
+end
