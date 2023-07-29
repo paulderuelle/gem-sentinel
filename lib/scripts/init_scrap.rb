@@ -8,7 +8,7 @@ def feed_first_time(gems)
   counter_changelog = 0
   counter_documentation = 0
   counter_nil = 0
-  gels.each do |gem_name, gem_info|
+  gems.each do |gem_name, gem_info|
     sleep(0.15)
     counter_gems += 1
     name = gem_name
