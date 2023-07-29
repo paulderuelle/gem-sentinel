@@ -10,9 +10,9 @@ function ProjectGemfiles({ projectId, projectGemfileId }) {
   }, [projectId, projectGemfileId]);
 
   // Effectue la requête API pour récupérer les gems en utilisant les ID Project et Gemfile
-  const getGems = (projectId, projectGemfileId) => {
+  const getGems = () => {
     const getGemsUrl = `/api/v1/projects/${projectId}/project_gemfiles/${projectGemfileId}/project_gems`;
-    console.log(projectId, projectGemfileId)
+    console.log('Api getGems URL : ', getGemsUrl);
     // const getGemsUrl = `/api/v1/projects/1/project_gemfiles/1/project_gems`;
 
     fetch(getGemsUrl)

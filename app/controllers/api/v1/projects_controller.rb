@@ -1,5 +1,5 @@
 class Api::V1::ProjectsController < ApplicationController
-  before_action :redirect_unlogged_users
+  # before_action :redirect_unlogged_users
 
   def index
     @projects = Project.all
@@ -18,7 +18,7 @@ class Api::V1::ProjectsController < ApplicationController
 
   def show
     project = Project.find(params[:id])
-    render json: { project_id: project.id, project_gemfile_id: project.project_gemfile.id }
+    render json: project.project_gemfile.id
   end
 
   private
