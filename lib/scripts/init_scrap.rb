@@ -9,9 +9,12 @@ def feed_first_time(gems)
   counter_documentation = 0
   counter_nil = 0
   Parallel.each(gems, in_threads: 4) do |gem_name, gem_info|
+    sleep(0.5)
     counter_gems += 1
     name = gem_name
     puts name
+    changelog_url = nil
+    documentation_url = nil
     gem_url = "https://rubygems.org/api/v1/gems/#{name}.json"
     pages = JSON.parse(URI.open("#{gem_url}").read)
     if pages['changelog_uri']
@@ -46,6 +49,7 @@ gems = MasterGem.pluck(:name)
 db_data = feed_first_time(gems)
 db_data.each do |name, info|
   master_gem = MasterGem.find_by(name: name)
+  puts master_gem
   gem_release = GemRelease.find_by(master_gem_id: master_gem.id)
   gem_release.update(version: info[:version], changelog_page_url: info[:changelog_url], documentation_page_url: info[:documentation_url])
   gem_release.save!
