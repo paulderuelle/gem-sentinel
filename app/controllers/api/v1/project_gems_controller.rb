@@ -17,10 +17,8 @@ class Api::V1::ProjectGemsController < ApplicationController
   private
 
   def get_gem_status(project_gem)
-    gem_release = project_gem.gem_release
-    master_gem_version = gem_release.master_gem.gem_releases.find_by(version: gem_release.version)
-    project_gem_version = gem_release.version
-
+    master_gem_version = project_gem.master_gem.gem_releases.order(created_at: :desc).first.version
+    project_gem_version = project_gem.gem_release.version
     master_gem_version == project_gem_version ? 'Up to date' : 'Updatable'
   end
 end
