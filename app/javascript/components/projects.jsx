@@ -35,7 +35,7 @@ function Projects({ clickProject }) {
             <input type="text" name="project[name]" id=""></input>
         </label>
         <label htmlFor="project_gemfile[content]">Bundle list content :
-            <input type="text" name="project_gemfile[content]" id=""></input>
+          <textarea name="project_gemfile[content]" id="project_gemfile_content"></textarea>
         </label>
         <input type="submit" value="Create"></input>
     </form>
