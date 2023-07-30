@@ -77,7 +77,7 @@ function Containers() {
           {container.id === 'gems_scan' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} clickGem={clickGem} />}
         </div>
       ))}
-      <button onClick={resetContainers} className="fas fa-arrow-left">Back</button>
+      <button onClick={resetContainers}>Back</button>
     </>
   );
 }
