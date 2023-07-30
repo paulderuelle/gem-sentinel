@@ -3,12 +3,12 @@
 #new-session-container {
     width: 500px;
     height: 400px;
+    background-color: $containers;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid $ruby;
     padding-bottom: 35px;
     color: $ruby;
 
@@ -51,7 +51,6 @@
 
             }
 
-            input[type="checkbox"],
             input[type="email"],
             input[type="password"] {
                 border: 2px $icons dashed;
@@ -64,14 +63,22 @@
                 font-weight: bold;
                 border: 2px solid $ruby;
             }
+
+            input[type="checkbox"] {
+                outline: 2px $icons dashed;
+            }
         }
 
+        .field-remember {
+            font-weight: bold;
+        }
     }
+
     .helper-links {
         display: flex;
         flex-direction: column;
         align-items: center;
-        
+
         a {
             color: $ruby;
             text-decoration: none;
