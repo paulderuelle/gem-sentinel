@@ -27,7 +27,7 @@ function ProjectGemfiles({ selectedProjectId, clickGem }) {
 
   return (
     <>
-      <p className='header-container'>Gems scan</p>
+      <p className='header-container'>{icons.IconChartColumn} Gems scan</p>
       <p>Used Gems: {totalGems}</p>
       <p>Updatable: {updatableGems}</p>
       <ul>

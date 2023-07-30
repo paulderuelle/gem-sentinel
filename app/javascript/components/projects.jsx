@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import icons from '../icons';
 
 function Projects({ clickProject }) {
   const [projects, setProjects] = useState([]);
@@ -19,7 +20,7 @@ function Projects({ clickProject }) {
 
   return (
     <>
-      <p className='header-container'>Repositories review</p>
+      <p className='header-container'>{icons.IconFileCode} Repositories review</p>
       <ul>
         {projects.map((project) => (
           <li key={project.id} onClick={() => clickProject(project.id)}>
