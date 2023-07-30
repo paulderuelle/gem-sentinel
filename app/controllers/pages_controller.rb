@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
   before_action :redirect_unlogged_users
-  def home
-    
-  end
+  def home; end
 
   private
 

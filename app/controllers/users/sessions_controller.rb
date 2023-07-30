@@ -11,7 +11,6 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   # def create
   #   super
-  #   redirect_to root_path
   # end
 
   # DELETE /resource/sign_out
