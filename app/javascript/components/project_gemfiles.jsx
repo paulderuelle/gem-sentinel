@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import icons from '../icons';
 
 function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
   const [gems, setGems] = useState([]);
@@ -11,6 +12,7 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
 
   const getGems = () => {
     const getGemsUrl = `/api/v1/projects/${projectId}/project_gemfiles/${projectGemfileId}/project_gems`;
+
 
     if (projectGemfileId != null) {
       fetch(getGemsUrl)
@@ -33,6 +35,8 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
         {gems.map((gem) => (
           <li key={gem.id} onClick={() => clickGem()}>
             {gem.name} - {gem.status}
+            {icons.IconCheck}
+            {icons.IconTimes}
           </li>
         ))}
       </ul>

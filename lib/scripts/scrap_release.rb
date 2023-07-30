@@ -105,8 +105,10 @@ module GemReleases
     counter_changelog = 0
     counter_documentation = 0
     counter_nil = 0
+    changelog_url = nil
+    documentation_url = nil
     gems = all_gems_scraper
-    Parallel.each(gems, in_threads: 4) do |gem_name, gem_info|
+    Parallel.each(gems, in_threads: 10) do |gem_name, gem_info|
       counter_gems += 1
       name = gem_name
       version = gem_info[:version]
@@ -143,4 +145,30 @@ module GemReleases
   end
 
   private_class_method :extract_gems_info_from_page, :get_total_pages, :gems_pages, :all_gems_scraper
+end
+
+# Run script to update relase or create new one if MasterGem not exist
+db_data = GemReleases.run
+db_data.each do |name, info|
+  master_gem = MasterGem.find_by(name: name)
+  if master_gem.nil?
+    master_gem = MasterGem.create!(name: name, rubygems_page_url: info[:gem_url])
+    GemRelease.create!(master_gem_id: master_gem.id, version: info[:version], changelog_page_url: info[:changelog_url], documentation_page_url: info[:documentation_url])
+    puts "Created #{name}"
+  else
+    puts "master gem : #{master_gem.name}"
+    gem_release = GemRelease.find_by(master_gem_id: master_gem.id)
+    puts gem_release
+    puts info[:version]
+    puts info[:changelog_url]
+    puts info[:documentation_url]
+    if gem_release.nil?
+      GemRelease.create!(master_gem_id: master_gem.id, version: info[:version], changelog_page_url: info[:changelog_url], documentation_page_url: info[:documentation_url])
+      puts "Created master gem #{name} with version #{info[:version]}"
+    else
+      gem_release.update(version: info[:version], changelog_page_url: info[:changelog_url], documentation_page_url: info[:documentation_url])
+      gem_release.save!
+      puts "Updated master gem #{name} with version #{info[:version]}"
+    end
+  end
 end

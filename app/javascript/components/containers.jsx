@@ -14,12 +14,14 @@ function Containers() {
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [selectedProjectGemfileId, setSelectedProjectGemfileId] = useState(null);
 
+
   const clickProject = (project) => {
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true },
       { ...prevContainers[1], visible: true },
       { ...prevContainers[2], visible: false },
     ]);
+
 
     setSelectedProjectId(project.id);
 
@@ -55,6 +57,7 @@ function Containers() {
   const resetContainers = () => {
     setSelectedProjectId(null);
     setSelectedProjectGemfileId(null);
+
     setContainers(initialState);
   };
 
@@ -71,6 +74,7 @@ function Containers() {
             display: container.visible ? 'block' : 'none',
             opacity: index === 0 && containers[2].visible ? '0.2' : '1',
             }}>
+              
           {container.id === 'repositories_review' && <Projects clickProject={clickProject} />}
           {container.id === 'gems_scan' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} clickGem={clickGem} />}
           {/* {container.id === 'release_tracker' && <GemChangelogs />} */}

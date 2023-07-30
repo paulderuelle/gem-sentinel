@@ -14,7 +14,7 @@ users = User.create!([{ username: 'user1', email: 'user1@example.com', password:
 
 puts 'generating gems...'
 master_gems_with_releases = (1..20).map do |i|
-  master_gem = MasterGem.create!(name: "MasterGem #{i}", rubygems_page_url: "https://rubygems.org/gems/gem#{i}")
+  master_gem = MasterGem.create!(name: "MasterGem yo #{i}", rubygems_page_url: "https://rubygems.org/gems/gem#{i}")
   gem_release = GemRelease.create!(version: "1.0.#{i}", changelog_page_url: "https://example.com/changelog/#{i}", master_gem: master_gem)
   { master_gem: master_gem, gem_release: gem_release }
 end
@@ -24,18 +24,16 @@ users.each do |user|
   5.times do |i|
     project = Project.create!(name: "Project #{i + 1}", user: user)
 
-
     # Création d'un project_gemfile pour chaque projet
     project_gemfile = ProjectGemfile.create!(content: "Content of Project Gemfile #{i + 1}", project: project)
 
-
     # Création de 5 project_gems pour chaque project_gemfile en associant les master_gems et gem_releases aléatoirement
     5.times do
-      random_master_gem_release = master_gems_with_releases.sample
+      # random_master_gem_release = master_gems_with_releases.sample
       ProjectGem.create!(
-        project_gemfile: project_gemfile,
-        master_gem: random_master_gem_release[:master_gem],
-        gem_release: random_master_gem_release[:gem_release]
+        project_gemfile: ProjectGemfile.last,
+        master_gem: MasterGem.last,
+        gem_release: GemRelease.last
       )
     end
   end
@@ -43,5 +41,3 @@ end
 
 
 puts 'seeded succesfully!'
-
-
