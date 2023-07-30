@@ -16,7 +16,18 @@ class Api::V1::ProjectsController < ApplicationController
 
   def show
     project = Project.find(params[:id])
-    render json: project.project_gemfile.id
+    project_gemfile = project.project_gemfile
+    project_gems = project_gemfile.project_gems
+
+    gem_data = project_gems.map do |project_gem|
+      {
+        id: project_gem.id,
+        name: project_gem.master_gem.name,
+        status: get_gem_status(project_gem)
+      }
+    end
+
+    render json: gem_data
   end
 
   private
@@ -46,5 +57,15 @@ class Api::V1::ProjectsController < ApplicationController
       master_gem_version == project_gem_version ? nil : updatable_gems += 1
     end
     updatable_gems
+  end
+
+  def get_gem_status(project_gem)
+    master_gem_version = get_master_gem_gem_release(project_gem).version
+    project_gem_version = project_gem.gem_release.version
+    master_gem_version == project_gem_version ? 'Up to date' : 'Updatable'
+  end
+
+  def get_master_gem_gem_release(project_gem)
+    project_gem.master_gem.gem_releases.order(created_at: :desc).first
   end
 end

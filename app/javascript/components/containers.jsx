@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Projects from './projects.jsx';
 import ProjectGemfiles from './project_gemfiles.jsx';
+import GemChangelogs from './gem_changelogs.jsx';
 
 
 function Containers() {
@@ -12,51 +13,32 @@ function Containers() {
 
   const [containers, setContainers] = useState(initialState);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
-  const [selectedProjectGemfileId, setSelectedProjectGemfileId] = useState(null);
+  const [selectedGemId, setSelectedGemId] = useState(null);
 
 
-  const clickProject = (project) => {
+  const clickProject = (projectId) => {
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true },
       { ...prevContainers[1], visible: true },
       { ...prevContainers[2], visible: false },
+
     ]);
-
-
-    setSelectedProjectId(project.id);
-
-    getGemfile(project.id)
-      .then((gemfileId) => {
-        setSelectedProjectGemfileId(gemfileId);
-      })
-      .catch((error) => {
-        console.error('Erreur :', error);
-      })
+    
+    setSelectedProjectId(projectId)
   };
 
-  const clickGem = () => {
+  const clickGem = (gemId) => {
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true, opacity: '0.2'},
       { ...prevContainers[1], visible: true, left: '50px' },
       { ...prevContainers[2], visible: true, left: '300px'},
     ]);
+
+    setSelectedGemId(gemId);
   }
-
-  const getGemfile = (projectId) => {
-    const getGemfileUrl = `/api/v1/projects/${projectId}`;
-
-    return fetch(getGemfileUrl)
-    .then((response) => response.json())
-    .then((data) => data)
-      .catch((error) => {
-        console.error('Erreur :', error);
-        throw error;
-      })
-  };
 
   const resetContainers = () => {
     setSelectedProjectId(null);
-    setSelectedProjectGemfileId(null);
 
     setContainers(initialState);
   };
@@ -76,8 +58,8 @@ function Containers() {
             }}>
               
           {container.id === 'repositories_review' && <Projects clickProject={clickProject} />}
-          {container.id === 'gems_scan' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} clickGem={clickGem} />}
-          {/* {container.id === 'release_tracker' && <GemChangelogs />} */}
+          {container.id === 'gems_scan' &&  <ProjectGemfiles selectedProjectId={selectedProjectId} clickGem={clickGem} />}
+          {container.id === 'release_tracker' && <GemChangelogs selectedGemId={selectedGemId} />}
         </div>
       ))}
       <button onClick={resetContainers}>Back</button>
