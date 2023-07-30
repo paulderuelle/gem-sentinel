@@ -62,8 +62,8 @@ function Containers() {
     <>
       {containers.map((container, index) => (
         <div
-          key={container.id}
-          className='containers'
+        key={container.id}
+        className='containers'
           style={{
             position: 'absolute',
             top: container.top,
@@ -73,6 +73,7 @@ function Containers() {
             }}>
           {container.id === 'repositories_review' && <Projects clickProject={clickProject} />}
           {container.id === 'gems_scan' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} clickGem={clickGem} />}
+          {/* {container.id === 'release_tracker' && <GemChangelogs />} */}
         </div>
       ))}
       <button onClick={resetContainers}>Back</button>

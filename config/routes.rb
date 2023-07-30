@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :projects, only: %i[index show create] do
         resources :project_gemfiles, only: %i[show] do
-          resources :project_gems, only: %i[index]
+          resources :project_gems, only: %i[index] do
+            resources :gem_releases, only: %i[show]
+          end
         end
       end
     end
