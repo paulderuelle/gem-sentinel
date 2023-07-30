@@ -10,6 +10,7 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
   const getGems = () => {
     const getGemsUrl = `/api/v1/projects/${projectId}/project_gemfiles/${projectGemfileId}/project_gems`;
 
+
     if (projectGemfileId != null) {
       fetch(getGemsUrl)
         .then((response) => response.json())
