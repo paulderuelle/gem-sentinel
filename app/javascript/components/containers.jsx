@@ -75,6 +75,7 @@ function Containers() {
             backgroundColor: container.backgroundColor,
             opacity: index === 0 && containers[2].visible ? '0.2' : '1',
           }}
+          class="container"
         >
           {container.id}
           {container.id === 'index_projects_container' && <Projects clickProject={clickProject} />}

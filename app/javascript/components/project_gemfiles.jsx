@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCircleArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
   const [gems, setGems] = useState([]);
@@ -26,6 +28,7 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
         {gems.map((gem) => (
           <li key={gem.id} onClick={() => clickGem()}>
             {gem.name} - {gem.status}
+            <FontAwesomeIcon icon={faCheck} />
           </li>
         ))}
       </ul>
