@@ -25,7 +25,8 @@ function Projects({ clickProject }) {
       <ul>
         {projects.map((project) => (
           <li key={project.id} onClick={() => clickProject(project.id)}>
-            {project.name} - {project.status}
+            <div className='project-card folder'>{icons.IconFolderOpen}</div>
+            <div className='project-card infos'>{project.name}{project.status === 'Updatable' ? icons.IconWrench : icons.IconCircleCheck}</div>
           </li>
         ))}
       </ul>

@@ -1,0 +1,19 @@
+@import 'variables';
+
+.project-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.folder {
+  height: 3.5rem;
+  width: 3.5rem;
+  background-color: $cards-primary;
+}
+.infos {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-left: 1rem;
+  color: $ruby;
+  background-color: $cards-secondary;
+}

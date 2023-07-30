@@ -1,6 +1,6 @@
 <div class="banner">
   <div class="container">
-    <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+    <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "button btn-logout" do %>
       <% concat content_tag(:i, "", class: "fa-solid fa-right-from-bracket", style:"color: black;") %>
     <% end %>
   </div>
