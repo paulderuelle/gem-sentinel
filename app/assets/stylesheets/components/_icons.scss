@@ -2,6 +2,7 @@
 
 .container-ico {
   color: white;
+  padding: 0 1rem;
 }
 .card-ico {
   font-size: 1.8rem;
@@ -9,10 +10,10 @@
 }
 .status-ico {
   font-size: 1.35rem;
+  padding-right: 1rem;
 }
 .updated {
   color: $valid;
-  padding: 0 1rem;
 }
 .to-update {
   color: $warning;
