@@ -13,12 +13,14 @@ function Containers() {
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [selectedProjectGemfileId, setSelectedProjectGemfileId] = useState(null);
 
+
   const clickProject = (project) => {
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true },
       { ...prevContainers[1], visible: true },
       { ...prevContainers[2], visible: false },
     ]);
+
 
     setSelectedProjectId(project.id);
 
@@ -54,6 +56,7 @@ function Containers() {
   const resetContainers = () => {
     setSelectedProjectId(null);
     setSelectedProjectGemfileId(null);
+
     setContainers(initialState);
   };
 
