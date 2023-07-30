@@ -30,15 +30,21 @@ function Projects({ clickProject }) {
           </li>
         ))}
       </ul>
-      <form action="/api/v1/projects" method="post">
-        <label htmlFor="project[name]">Name:
-          <input type="text" name="project[name]" id="project_name"></input>
-        </label>
-        <label htmlFor="project_gemfile[content]">Bundle list content:
-          <textarea name="project_gemfile[content]" id="project_gemfile_content"></textarea>
-        </label>
-        <input type="submit" value="Create"></input>
-      </form>
+      <div id='create-project-form-container'>
+        <form action="/api/v1/projects" method="post">
+          <div className='field'>
+            <label htmlFor="project[name]">Name:
+              <input type="text" name="project[name]" id="project_name"></input>
+            </label>
+          </div>
+          <div className='field'>
+            <label htmlFor="project_gemfile[content]">Bundle list content:
+              <textarea name="project_gemfile[content]" id="project_gemfile_content"></textarea>
+            </label>
+          </div>
+          <input type="submit" value="Create"></input>
+        </form>
+      </div>
     </>
   );
 }

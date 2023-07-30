@@ -50,6 +50,7 @@ function Containers() {
       {containers.map((container, index) => (
         <div
         key={container.id}
+        id={container.id}
         className='containers'
           style={{
             position: 'absolute',
