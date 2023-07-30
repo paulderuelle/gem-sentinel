@@ -13,27 +13,18 @@ function Containers() {
 
   const [containers, setContainers] = useState(initialState);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
-  const [selectedProjectGemfileId, setSelectedProjectGemfileId] = useState(null);
   const [selectedGemId, setSelectedGemId] = useState(null);
 
 
-  const clickProject = (project) => {
+  const clickProject = (projectId) => {
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true },
       { ...prevContainers[1], visible: true },
       { ...prevContainers[2], visible: false },
+
     ]);
-
-
-    setSelectedProjectId(project.id);
-
-    getGemfile(project.id)
-      .then((gemfileId) => {
-        setSelectedProjectGemfileId(gemfileId);
-      })
-      .catch((error) => {
-        console.error('Erreur :', error);
-      })
+    
+    setSelectedProjectId(projectId)
   };
 
   const clickGem = (gemId) => {
@@ -46,21 +37,8 @@ function Containers() {
     setSelectedGemId(gemId);
   }
 
-  const getGemfile = (projectId) => {
-    const getGemfileUrl = `/api/v1/projects/${projectId}`;
-
-    return fetch(getGemfileUrl)
-    .then((response) => response.json())
-    .then((data) => data)
-      .catch((error) => {
-        console.error('Erreur :', error);
-        throw error;
-      })
-  };
-
   const resetContainers = () => {
     setSelectedProjectId(null);
-    setSelectedProjectGemfileId(null);
 
     setContainers(initialState);
   };
@@ -80,7 +58,7 @@ function Containers() {
             }}>
               
           {container.id === 'repositories_review' && <Projects clickProject={clickProject} />}
-          {container.id === 'gems_scan' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} clickGem={clickGem} />}
+          {container.id === 'gems_scan' &&  <ProjectGemfiles selectedProjectId={selectedProjectId} clickGem={clickGem} />}
           {container.id === 'release_tracker' && <GemChangelogs selectedGemId={selectedGemId} />}
         </div>
       ))}

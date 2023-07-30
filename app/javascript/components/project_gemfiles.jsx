@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import icons from '../icons';
 
-function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
+function ProjectGemfiles({ selectedProjectId, clickGem }) {
   const [gems, setGems] = useState([]);
   const [totalGems, setTotalGems] = useState(0);
   const [updatableGems, setUpdatableGems] = useState(0)
 
   useEffect(() => {
     getGems();
-  }, [projectId, projectGemfileId]);
+  }, [selectedProjectId]);
 
   const getGems = () => {
-    const getGemsUrl = `/api/v1/projects/${projectId}/project_gemfiles/${projectGemfileId}/project_gems`;
+    const getGemsUrl = `/api/v1/projects/${selectedProjectId}`;
 
-
-    if (projectGemfileId != null) {
+    if (selectedProjectId) {
       fetch(getGemsUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setGems(data);
-          setTotalGems(data.length);
-          const updatableGemsCount = data.filter((gem) => gem.status === 'Updatable').length;
-          setUpdatableGems(updatableGemsCount);
-        });
+      .then((response) => response.json())
+      .then((data) => {
+        setGems(data);
+        setTotalGems(data.length);
+        const updatableGemsCount = data.filter((gem) => gem.status === 'Updatable').length;
+        setUpdatableGems(updatableGemsCount);
+      });
     }
   };
 

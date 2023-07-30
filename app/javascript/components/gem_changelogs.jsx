@@ -8,19 +8,21 @@ function GemChangelogs({selectedGemId}) {
   }, [selectedGemId]);
 
   const getGem = () => {
-    const getInfosToDisplayUrl = `/project_gems/${selectedGemId}`
+    const getInfosToDisplayUrl = `/api/v1/project_gems/${selectedGemId}`
 
-    fetch(getInfosToDisplayUrl)
+    if (selectedGemId) {
+      fetch(getInfosToDisplayUrl)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-      })
+        setGem(data);
+      });
+    }
   }
 
 
   return (
     <>
-      <p>{selectedGemId}</p>
+      <p>{gem.name} - {gem.id}</p>
     </>
   );
 }

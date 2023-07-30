@@ -22,7 +22,7 @@ function Projects({ clickProject }) {
       <p className='header-container'>Repositories review</p>
       <ul>
         {projects.map((project) => (
-          <li key={project.id} onClick={() => clickProject(project)}>
+          <li key={project.id} onClick={() => clickProject(project.id)}>
             {project.name} - {project.status}
           </li>
         ))}
