@@ -7,9 +7,6 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas);
 
 const icons = {
-  // navbar icons
-  IconGear: <FontAwesomeIcon icon={['fas', 'gear']} color = '#9E0000' />,
-  IconRightFromBracket: <FontAwesomeIcon icon={['fas', 'right-from-bracket']} color = '#9E0000'/>,
   // projects-container icons
   IconFileCode: <FontAwesomeIcon icon={['fas', 'file-code']} color = 'white'/>,
   IconFolderOpen: <FontAwesomeIcon icon={['fas', 'folder-open']} color = '#D34231' />,

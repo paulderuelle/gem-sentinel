@@ -5,19 +5,17 @@
   background-position: center;
   padding: 60px 0;
   background-color: $ruby;
-}
-
-.banner h1 {
-  margin: 0;
-  color: black;
-  text-shadow: 1px 1px 3px dark;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.banner p {
-  font-size: 20px;
-  color: black;
-  opacity: .7;
-  text-shadow: 1px 1px 3px dark;
+  h1 {
+    margin: 0;
+    color: black;
+    text-shadow: 1px 1px 3px dark;
+    font-size: 32px;
+    font-weight: bold;
+    &:p {
+      font-size: 20px;
+      color: black;
+      opacity: .7;
+      text-shadow: 1px 1px 3px dark;
+    }
+  }
 }

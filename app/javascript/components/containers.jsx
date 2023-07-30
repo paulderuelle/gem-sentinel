@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Projects from './projects.jsx';
 import ProjectGemfiles from './project_gemfiles.jsx';
 import GemChangelogs from './gem_changelogs.jsx';
-
+import icons from '../icons';
 
 function Containers() {
   const initialState = [
@@ -14,18 +14,21 @@ function Containers() {
   const [containers, setContainers] = useState(initialState);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [selectedGemId, setSelectedGemId] = useState(null);
-
+  const [clickDisabled, setClickDisabled] = useState(false);
 
   const clickProject = (projectId) => {
-    setContainers((prevContainers) => [
-      { ...prevContainers[0], visible: true },
-      { ...prevContainers[1], visible: true },
-      { ...prevContainers[2], visible: false },
-    ]);
-    setSelectedProjectId(projectId)
+    if (!clickDisabled) {
+      setContainers((prevContainers) => [
+        { ...prevContainers[0], visible: true },
+        { ...prevContainers[1], visible: true },
+        { ...prevContainers[2], visible: false },
+      ]);
+      setSelectedProjectId(projectId)
+    }
   };
 
   const clickGem = (gemId) => {
+    setClickDisabled(true);
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true, opacity: '0.2'},
       { ...prevContainers[1], visible: true, left: '50px' },
@@ -36,6 +39,8 @@ function Containers() {
 
   const resetContainers = () => {
     setSelectedProjectId(null);
+    setSelectedGemId(null);
+    setClickDisabled(false);
     setContainers(initialState);
   };
 
@@ -57,7 +62,14 @@ function Containers() {
           {container.id === 'release_tracker' && <GemChangelogs selectedGemId={selectedGemId} />}
         </div>
       ))}
-      <button onClick={resetContainers}>Back</button>
+      <button
+      className='button btn-back'
+      style={{
+        position: 'absolute',
+        top: '50px',
+        left: '10px',
+      }}
+      onClick={resetContainers}>{icons.IconAnglesLeft}</button>
     </>
   );
 }

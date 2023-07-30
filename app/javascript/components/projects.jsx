@@ -33,3 +33,7 @@ function Projects({ clickProject }) {
 }
 
 export default Projects;
+
+// implement create
+// fetch sur api/v1/projects
+// render form !! penser à suppr. dossier
