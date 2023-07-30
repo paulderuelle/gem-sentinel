@@ -156,9 +156,19 @@ db_data.each do |name, info|
     GemRelease.create!(master_gem_id: master_gem.id, version: info[:version], changelog_page_url: info[:changelog_url], documentation_page_url: info[:documentation_url])
     puts "Created #{name}"
   else
+    puts "master gem : #{master_gem.name}"
     gem_release = GemRelease.find_by(master_gem_id: master_gem.id)
-    gem_release.update(version: info[:version], changelog_page_url: info[:changelog_url], documentation_page_url: info[:documentation_url])
-    gem_release.save!
+    puts gem_release
+    puts info[:version]
+    puts info[:changelog_url]
+    puts info[:documentation_url]
+    if gem_release.nil?
+      GemRelease.create!(master_gem_id: master_gem.id, version: info[:version], changelog_page_url: info[:changelog_url], documentation_page_url: info[:documentation_url])
+      puts "Created master gem #{name} with version #{info[:version]}"
+    else
+      gem_release.update(version: info[:version], changelog_page_url: info[:changelog_url], documentation_page_url: info[:documentation_url])
+      gem_release.save!
+      puts "Updated master gem #{name} with version #{info[:version]}"
+    end
   end
-  puts "Updated #{name}"
 end
