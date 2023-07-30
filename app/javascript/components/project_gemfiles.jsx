@@ -33,7 +33,7 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
       <p>Updatable: {updatableGems}</p>
       <ul>
         {gems.map((gem) => (
-          <li key={gem.id} onClick={() => clickGem()}>
+          <li key={gem.id} onClick={() => clickGem(gem.id)}>
             {gem.name} - {gem.status}
             {icons.IconCheck}
             {icons.IconTimes}
