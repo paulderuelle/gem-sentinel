@@ -5,12 +5,16 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def create
-    project = Project.new(project_params)
+    project_params = params.require(:project).permit(:name)
+    project_gemfile_params = params.require(:project_gemfile).permit(:content)
+    project = ProjectCreationService.create_with_gemfile(project_params, project_gemfile_params, current_user)
 
-    if project.save
-      render json: project, status: :created
+    if project.persisted?
+      # Gérer la redirection ou la réponse en cas de succès
+      redirect_to root_path
     else
-      render json: project.errors, status: :unprocessable_entity
+      # Gérer la réponse en cas d'échec de création
+      render :new
     end
   end
 
