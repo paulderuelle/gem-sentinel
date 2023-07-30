@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import icons from '../icons';
 
 function GemChangelogs({selectedGemId}) {
   const [gem, setGem] = useState([])
@@ -15,6 +16,7 @@ function GemChangelogs({selectedGemId}) {
       .then((response) => response.json())
       .then((data) => {
         setGem(data);
+        console.log(data)
       });
     }
   }
@@ -22,7 +24,12 @@ function GemChangelogs({selectedGemId}) {
 
   return (
     <>
-      <p>{gem.name} - {gem.id}</p>
+      <p className='header-container'>{icons.IconCodeCommit} Release tracker</p>
+      <h3>Lastest version</h3>
+      <p>{gem.reference_version}</p>
+      <h3>Current version</h3>
+      <p>{gem.current_version}</p>
+      <a href={gem.changelog_page_url}>{icons.IconArrowUpRightFromSquare}</a>
     </>
   );
 }
