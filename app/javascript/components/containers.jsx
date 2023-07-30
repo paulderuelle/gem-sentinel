@@ -42,6 +42,7 @@ function Containers() {
     setSelectedGemId(null);
     setClickDisabled(false);
     setContainers(initialState);
+    document.querySelector('.containers').scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
