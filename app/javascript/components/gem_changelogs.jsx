@@ -24,11 +24,17 @@ function GemChangelogs({selectedGemId}) {
   return (
     <>
       <p className='header-container'>{icons.IconCodeCommit} Release tracker</p>
-      <h3>Lastest version</h3>
-      <p>{gem.reference_version}</p>
-      <h3>Current version</h3>
-      <p>{gem.current_version}</p>
-      <a href={gem.changelog_page_url} target="_blank" className="button btn-link">{icons.IconArrowUpRightFromSquare}</a>
+      <div className='changelog-card'><i id='changelog-icon'>{icons.IconCircleInfo}</i>
+        <div className='changelog-text'>
+          <div id='view-changelog'>
+            <h3>Lastest version</h3>
+            <a href={gem.changelog_page_url} target="_blank" className="button btn-link">{icons.IconArrowUpRightFromSquare}</a>
+          </div>
+          <p>{gem.reference_version}</p>
+          <h3>Current version</h3>
+          <p>{gem.current_version}</p>
+        </div>
+      </div>
     </>
   );
 }

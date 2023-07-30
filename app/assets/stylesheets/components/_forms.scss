@@ -46,20 +46,23 @@
             font-weight: bold;
             gap: 5px;
 
-            input {
+            input, textarea {
                 font-size: 1.5rem;
                 width: 100%;
                 padding: 2px 5px;
-
+                &::placeholder {
+                  font-size: 1.2rem;
+                }
             }
 
+            textarea,
             input[type="text"],
             input[type="email"],
             input[type="password"] {
                 border: 2px $icons dashed;
             }
 
-            input[type="submit"] {
+            input[type="submit"], {
                 padding: 5px 50px;
                 background-color: $lightred;
                 color: $ruby;
