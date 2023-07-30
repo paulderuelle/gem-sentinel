@@ -7,20 +7,22 @@
     <%= csp_meta_tag %>
 
     <%= favicon_link_tag %>
-
+    <script src="https://kit.fontawesome.com/000d9bfcce.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-    <div class="header">
-    <%= render 'shared/banner' %>
-    </div>
-    <div class="content">
+    <header>
+      <%= render 'shared/banner' %>
+    </header>
+
+    <main>
       <%= yield %>
-    </div>
-    <div class="footer">
+    </main>
+
+    <footer>
       <%= render 'shared/footer' %>
-    </div>
+    </footer>
   </body>
 </html>

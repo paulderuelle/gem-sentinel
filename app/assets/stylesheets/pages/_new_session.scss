@@ -1,21 +1,32 @@
 @import 'variables';
 
 #new-session-container {
-    width: 300px;
-    height: 350px;
+    width: 500px;
+    height: 400px;
+    background-color: $containers;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid $ruby;
-    border-radius: 25px;
-    padding-block: 15px;
+    padding-bottom: 35px;
+    color: $ruby;
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+    h2 {
+        height: 55px;
+        width: 100%;
+        background-color: $ruby;
+        color: $containers;
+        display: flex;
+        align-items: center;
+        padding-left: 25px;
+        gap: 15px;
+    }
+
+    *:focus,
+    *:focus-visible,
+    *:focus-within {
+        outline: none !important;
     }
 
     form {
@@ -26,16 +37,52 @@
         align-items: center;
         justify-content: space-evenly;
 
-        .field, .actions {
+        .field,
+        .actions {
             display: flex;
             flex-direction: column;
             font-size: 1.5rem;
+            font-weight: bold;
 
             input {
                 font-size: 1.5rem;
                 width: 100%;
                 padding: 2px 5px;
+
             }
+
+            input[type="email"],
+            input[type="password"] {
+                border: 2px $icons dashed;
+            }
+
+            input[type="submit"] {
+                padding: 5px 50px;
+                background-color: $lightred;
+                color: $ruby;
+                font-weight: bold;
+                border: 2px solid $ruby;
+            }
+
+            input[type="checkbox"] {
+                outline: 2px $icons dashed;
+            }
+        }
+
+        .field-remember {
+            font-weight: bold;
+        }
+    }
+
+    .helper-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        a {
+            color: $ruby;
+            text-decoration: none;
+            font-weight: bold;
         }
     }
 }
