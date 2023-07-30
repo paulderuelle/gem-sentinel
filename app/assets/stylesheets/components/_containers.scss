@@ -1,9 +1,20 @@
 @import 'variables';
 
 .containers {
-  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: $containers;
+  ul {
+    list-style: none;
+    li {
+      display: flex;
+      padding: 0.7rem 0;
+    }
+  }
 }
 .header-container {
   background-color: $ruby;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  height: 100%;
 }
