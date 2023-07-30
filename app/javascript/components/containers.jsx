@@ -6,9 +6,9 @@ import icons from '../icons';
 
 function Containers() {
   const initialState = [
-    { id: 'repositories_review', top: '50px', left: '10px', visible: true },
-    { id: 'gems_scan', top: '50px', left: '300px', visible: false },
-    { id: 'release_tracker', top: '50px', left: '600px', visible: false },
+    { id: 'repositories_review', visible: true },
+    { id: 'gems_scan', visible: false },
+    { id: 'release_tracker', visible: false },
   ];
 
   const [containers, setContainers] = useState(initialState);
@@ -20,7 +20,7 @@ function Containers() {
     if (!clickDisabled) {
       setContainers((prevContainers) => [
         { ...prevContainers[0], visible: true },
-        { ...prevContainers[1], visible: true },
+        { ...prevContainers[1], visible: true, left: '42rem' },
         { ...prevContainers[2], visible: false },
       ]);
       setSelectedProjectId(projectId)
@@ -31,8 +31,8 @@ function Containers() {
     setClickDisabled(true);
     setContainers((prevContainers) => [
       { ...prevContainers[0], visible: true, opacity: '0.2'},
-      { ...prevContainers[1], visible: true, left: '50px' },
-      { ...prevContainers[2], visible: true, left: '300px'},
+      { ...prevContainers[1], visible: true, left: '3rem' },
+      { ...prevContainers[2], visible: true, left: '45rem'},
     ]);
     setSelectedGemId(gemId);
   }
@@ -52,7 +52,6 @@ function Containers() {
         className='containers'
           style={{
             position: 'absolute',
-            top: container.top,
             left: container.left,
             display: container.visible ? 'block' : 'none',
             opacity: index === 0 && containers[2].visible ? '0.2' : '1',
@@ -62,14 +61,9 @@ function Containers() {
           {container.id === 'release_tracker' && <GemChangelogs selectedGemId={selectedGemId} />}
         </div>
       ))}
-      <a
-      className='button btn-back'
-      style={{
-        position: 'absolute',
-        top: '50px',
-        left: '15px',
-      }}
-      onClick={resetContainers}>{icons.IconAnglesLeft}</a>
+      {containers[0].opacity === '0.2' && (<a className='button btn-back'style={{ position: 'absolute', top: '-0.4rem',}}
+        onClick={resetContainers}>{icons.IconAnglesLeft}</a>
+      )}
     </>
   );
 }

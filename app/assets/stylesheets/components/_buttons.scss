@@ -1,10 +1,11 @@
 @import 'variables';
 
 .button {
-  font-size: 2rem;
+  font-size: 3.25rem;
 }
 .btn-back {
   border: none;
   background: none;
   cursor: pointer;
+  color: $ruby;
 }
