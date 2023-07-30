@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
-function Changelogs() {
-  const [version, setVersion] = useState([])
+function GemChangelogs({selectedGemId}) {
+  const [gem, setGem] = useState([])
 
   useEffect(() => {
-    getChangelogs();
-  }, []);
+    getGem();
+  }, [selectedGemId]);
 
-  const getVersion = () => {
-    const getVersionUrl = '/api/v1/projects/${projectId}/project_gemfiles/${projectGemfileId}/project_gems';
+  const getGem = () => {
+    const getInfosToDisplayUrl = `/api/v1/project_gems/${selectedGemId}`
 
+    if (selectedGemId) {
+      fetch(getInfosToDisplayUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setGem(data);
+      });
+    }
   }
 
 
   return (
     <>
-      <p className='header-container'>Release tracker</p>
-      <ul>
-        {gems.map((gem) => (
-          <li key={gem.id} onClick={() => clickGem()}>
-            {gem.name} - {gem.status}
-            {/* Afficher la version de la gem en utilisant GemRelease */}
-            {gem.status === 'Updatable' && <GemRelease version={gem.gem_release.version} />}
-          </li>
-        ))}
-      </ul>
+      <p>{gem.name} - {gem.id}</p>
     </>
   );
 }
 
-export default Changelogs;
+export default GemChangelogs;
