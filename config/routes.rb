@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :project_gems, only: %i[show]
-      resources :projects, only: %i[index show create new]
+      resources :projects, only: %i[index show create new update]
     end
   end
   root 'pages#home'

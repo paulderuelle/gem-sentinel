@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import icons from '../icons';
-
 function ProjectGemfiles({ selectedProjectId, clickGem }) {
   const [gems, setGems] = useState([]);
   const [totalGems, setTotalGems] = useState(0);
   const [updatableGems, setUpdatableGems] = useState(0)
-
   useEffect(() => {
     getGems();
   }, [selectedProjectId]);
-
   const getGems = () => {
     const getGemsUrl = `/api/v1/projects/${selectedProjectId}`;
-
     if (selectedProjectId) {
       fetch(getGemsUrl)
       .then((response) => response.json())
@@ -24,7 +20,6 @@ function ProjectGemfiles({ selectedProjectId, clickGem }) {
       });
     }
   };
-
   return (
     <>
       <p className='header-container'>{icons.IconChartColumn} Gems scan</p>
@@ -38,8 +33,14 @@ function ProjectGemfiles({ selectedProjectId, clickGem }) {
           </li>
         ))}
       </ul>
+      <form action={`/api/v1/projects/${selectedProjectId}`} method="post">
+        <input type="hidden" name="_method" value="put" />
+        <label htmlFor="project_gemfile[content]">Bundle list content:
+          <textarea name="project_gemfile[content]" id="project_gemfile_content"></textarea>
+        </label>
+        <input type="submit" value="Update"></input>
+      </form>
     </>
   );
 }
-
 export default ProjectGemfiles;

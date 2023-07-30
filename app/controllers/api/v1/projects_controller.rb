@@ -18,6 +18,13 @@ class Api::V1::ProjectsController < ApplicationController
     end
   end
 
+  def update
+    project = Project.find(params[:id])
+    project_gemfile_params = params.require(:project_gemfile).permit(:content)
+    ProjectManagementService.update_with_gemfile(project, project_gemfile_params) # <-- modification here
+    redirect_to root_path
+end
+
   def show
     project = Project.find(params[:id])
     project_gemfile = project.project_gemfile
