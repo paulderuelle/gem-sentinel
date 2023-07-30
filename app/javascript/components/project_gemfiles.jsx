@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
   const [gems, setGems] = useState([]);
+  const [totalGems, setTotalGems] = useState(0);
+  const [updatableGems, setUpdatableGems] = useState(0)
 
   useEffect(() => {
     getGems();
@@ -16,12 +18,17 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
         .then((response) => response.json())
         .then((data) => {
           setGems(data);
+          setTotalGems(data.length);
+          const updatableGemsCount = data.filter((gem) => gem.status === 'Updatable').length;
+          setUpdatableGems(updatableGemsCount);
         });
     }
   };
 
   return (
     <div>
+      <h3>Used Gems: {totalGems}</h3>
+      <h3>Updatable: {updatableGems}</h3>
       <ul>
         {gems.map((gem) => (
           <li key={gem.id} onClick={() => clickGem()}>
