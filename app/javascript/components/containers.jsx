@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import Projects from './projects.jsx';
 import ProjectGemfiles from './project_gemfiles.jsx';
 
+
 function Containers() {
   const initialState = [
-    { id: 'index_projects_container', backgroundColor: '#FFF2F2', border: '1px solid red', top: '50px', left: '10px', visible: true },
-    { id: 'index_gemfiles_container', backgroundColor: '#FFF2F2', border: '1px solid blue', top: '50px', left: '300px', visible: false },
-    { id: 'show_gem_container', backgroundColor: '#FFF2F2', border: '1px solid green', top: '50px', left: '600px', visible: false },
+    { id: 'repositories_review', top: '50px', left: '10px', visible: true },
+    { id: 'gems_scan', top: '50px', left: '300px', visible: false },
+    { id: 'release_tracker', top: '50px', left: '600px', visible: false },
   ];
 
   const [containers, setContainers] = useState(initialState);
@@ -65,20 +66,17 @@ function Containers() {
       {containers.map((container, index) => (
         <div
           key={container.id}
-          id={container.id}
+          className='containers'
           style={{
-            border: container.border,
             position: 'absolute',
             top: container.top,
             left: container.left,
             display: container.visible ? 'block' : 'none',
-            backgroundColor: container.backgroundColor,
             opacity: index === 0 && containers[2].visible ? '0.2' : '1',
-          }}
-        >
-          {container.id}
-          {container.id === 'index_projects_container' && <Projects clickProject={clickProject} />}
-          {container.id === 'index_gemfiles_container' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} clickGem={clickGem} />}
+            }}>
+              
+          {container.id === 'repositories_review' && <Projects clickProject={clickProject} />}
+          {container.id === 'gems_scan' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} clickGem={clickGem} />}
         </div>
       ))}
       <button onClick={resetContainers}>Back</button>

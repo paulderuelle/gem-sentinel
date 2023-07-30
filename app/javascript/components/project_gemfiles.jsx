@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import icons from '../icons';
 
 function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
   const [gems, setGems] = useState([]);
+  const [totalGems, setTotalGems] = useState(0);
+  const [updatableGems, setUpdatableGems] = useState(0)
 
   useEffect(() => {
     getGems();
@@ -16,20 +19,28 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
         .then((response) => response.json())
         .then((data) => {
           setGems(data);
+          setTotalGems(data.length);
+          const updatableGemsCount = data.filter((gem) => gem.status === 'Updatable').length;
+          setUpdatableGems(updatableGemsCount);
         });
     }
   };
 
   return (
-    <div>
+    <>
+      <p className='header-container'>Gems scan</p>
+      <p>Used Gems: {totalGems}</p>
+      <p>Updatable: {updatableGems}</p>
       <ul>
         {gems.map((gem) => (
           <li key={gem.id} onClick={() => clickGem()}>
             {gem.name} - {gem.status}
+            {icons.IconCheck}
+            {icons.IconTimes}
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
 
