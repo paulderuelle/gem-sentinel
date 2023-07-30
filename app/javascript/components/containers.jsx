@@ -73,9 +73,8 @@ function Containers() {
             left: container.left,
             display: container.visible ? 'block' : 'none',
             opacity: index === 0 && containers[2].visible ? '0.2' : '1',
-           }}
-         >
-          {container.id}
+            }}>
+              
           {container.id === 'repositories_review' && <Projects clickProject={clickProject} />}
           {container.id === 'gems_scan' &&  <ProjectGemfiles projectId={selectedProjectId} projectGemfileId={selectedProjectGemfileId} clickGem={clickGem} />}
         </div>

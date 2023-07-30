@@ -27,9 +27,10 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
   };
 
   return (
-    <div>
-      <h3>Used Gems: {totalGems}</h3>
-      <h3>Updatable: {updatableGems}</h3>
+    <>
+      <p className='header-container'>Gems scan</p>
+      <p>Used Gems: {totalGems}</p>
+      <p>Updatable: {updatableGems}</p>
       <ul>
         {gems.map((gem) => (
           <li key={gem.id} onClick={() => clickGem()}>
@@ -39,7 +40,7 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
 

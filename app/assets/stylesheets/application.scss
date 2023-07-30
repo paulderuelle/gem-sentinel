@@ -16,13 +16,5 @@
 
  // Import Fonts etc...
 
-@import 'index';
 @import 'variables';
-
-.container {
-  width: 100%;
-  max-width: 20rem;
-  margin: 0 auto;
-  padding: 0 1rem;
-  box-shadow: 0 0 3rem rgba(244, 3, 3, 0.2);
-}
+@import 'index';
