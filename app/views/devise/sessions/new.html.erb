@@ -1,7 +1,7 @@
 <div id="new-session-container" class="containers">
   <h2><i class="fa-solid fa-user-gear"></i>Log in</h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { "data-turbo" => "false" }) do |f| %>
     <div class="field">
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
