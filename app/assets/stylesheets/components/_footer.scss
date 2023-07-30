@@ -2,29 +2,16 @@
 
 footer {
   background: $darkred;
+  color: $ruby;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 60px;
+  height: $footer-height;
   width: 100%;
-  padding: 0px 50px;
-  color: $ruby;
-}
-.footer-links {
-  display: flex;
-  align-items: center;
-  a {
+  position: fixed;
+  bottom: 0;
+  .fa-heart {
     color: $icons;
-    opacity: 0.15;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 0px 10px;
-    &:hover {
-      opacity: 1;
-    }
+    padding: 0 10px;
   }
-}
-.footer .fa-heart {
-  color: $icons;
 }

@@ -1,6 +1,8 @@
-<div class="logout-container">
-  <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "button btn-logout" do %>
-    <% concat content_tag(:i, "", class: "fa-solid fa-right-from-bracket", style:"color: #9E0000;") %>
-  <% end %>
-</div>
-<img src="https://i.ibb.co/0CyhSh8/logo-Copie.png" alt="logo GemSentinel">
+<header>
+  <img src="https://i.ibb.co/0CyhSh8/logo-Copie.png" alt="logo GemSentinel">
+  <div class="logout-container">
+    <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "button btn-logout" do %>
+      <% concat content_tag(:i, "", class: "fa-solid fa-right-from-bracket", style:"color: #9E0000;") %>
+    <% end %>
+  </div>
+</header>

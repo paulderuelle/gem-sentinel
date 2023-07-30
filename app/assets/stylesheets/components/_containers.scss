@@ -1,9 +1,14 @@
 @import 'variables';
 
+#global-container {
+  height: min-content;
+}
 .containers {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: $containers;
   width: 40rem;
+  max-height: 75vh;
+  overflow: scroll;
   ul {
     columns: 2;
     column-gap: 0;
