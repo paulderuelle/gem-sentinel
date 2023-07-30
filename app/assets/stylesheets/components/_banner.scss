@@ -4,12 +4,12 @@
   background-size: cover;
   background-position: center;
   padding: 60px 0;
-  background-color: $primary-color;
+  background-color: $ruby;
 }
 
 .banner h1 {
   margin: 0;
-  color: $third-color;
+  color: black;
   text-shadow: 1px 1px 3px dark;
   font-size: 32px;
   font-weight: bold;
@@ -17,7 +17,7 @@
 
 .banner p {
   font-size: 20px;
-  color: $third-color;
+  color: black;
   opacity: .7;
   text-shadow: 1px 1px 3px dark;
 }
