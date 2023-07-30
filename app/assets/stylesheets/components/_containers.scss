@@ -1,4 +1,9 @@
+@import 'variables';
+
 .containers {
   border: 1px solid black;
   background-color: aquamarine;
+}
+.header-container {
+  background-color: $primary-color;
 }

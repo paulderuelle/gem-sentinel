@@ -18,13 +18,16 @@ function Projects({ clickProject }) {
   };
 
   return (
-    <ul>
-      {projects.map((project) => (
-        <li key={project.id} onClick={() => clickProject(project)}>
-          {project.name} - {project.status}
-        </li>
-      ))}
-    </ul>
+    <>
+      <p className='header-container'>Repositories review</p>
+      <ul>
+        {projects.map((project) => (
+          <li key={project.id} onClick={() => clickProject(project)}>
+            {project.name} - {project.status}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
 
