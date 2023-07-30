@@ -18,6 +18,7 @@ function Projects({ clickProject }) {
       });
   };
 
+
   return (
     <>
       <p className='header-container'>{icons.IconFileCode} Repositories review</p>
@@ -28,12 +29,17 @@ function Projects({ clickProject }) {
           </li>
         ))}
       </ul>
+      <form action="/api/v1/projects" method="post">
+        <label htmlFor="project[name]">Name :
+            <input type="text" name="project[name]" id=""></input>
+        </label>
+        <label htmlFor="project_gemfile[content]">Bundle list content :
+            <input type="text" name="project_gemfile[content]" id=""></input>
+        </label>
+        <input type="submit" value="Create"></input>
+    </form>
     </>
   );
 }
 
 export default Projects;
-
-// implement create
-// fetch sur api/v1/projects
-// render form !! penser à suppr. dossier
