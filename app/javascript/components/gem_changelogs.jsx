@@ -16,7 +16,6 @@ function GemChangelogs({selectedGemId}) {
       .then((response) => response.json())
       .then((data) => {
         setGem(data);
-        console.log(data)
       });
     }
   }
@@ -29,7 +28,7 @@ function GemChangelogs({selectedGemId}) {
       <p>{gem.reference_version}</p>
       <h3>Current version</h3>
       <p>{gem.current_version}</p>
-      <a href={gem.changelog_page_url}>{icons.IconArrowUpRightFromSquare}</a>
+      <a href={gem.changelog_page_url} target="_blank" className="button btn-link">{icons.IconArrowUpRightFromSquare}</a>
     </>
   );
 }
