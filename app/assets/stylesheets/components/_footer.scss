@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   a {
-    color: $cards;
+    color: $icons;
     opacity: 0.15;
     text-decoration: none;
     font-size: 18px;
@@ -26,5 +26,5 @@
   }
 }
 .footer .fa-heart {
-  color: $cards;
+  color: $icons;
 }

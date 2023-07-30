@@ -62,14 +62,14 @@ function Containers() {
           {container.id === 'release_tracker' && <GemChangelogs selectedGemId={selectedGemId} />}
         </div>
       ))}
-      <button
+      <a
       className='button btn-back'
       style={{
         position: 'absolute',
         top: '50px',
-        left: '10px',
+        left: '15px',
       }}
-      onClick={resetContainers}>{icons.IconAnglesLeft}</button>
+      onClick={resetContainers}>{icons.IconAnglesLeft}</a>
     </>
   );
 }

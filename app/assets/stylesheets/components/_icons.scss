@@ -1,0 +1,19 @@
+@import "variables";
+
+.container-ico {
+  color: white;
+}
+.card-ico {
+  font-size: 1.8rem;
+  color: $icons;
+}
+.status-ico {
+  font-size: 1.35rem;
+}
+.updated {
+  color: $valid;
+  padding: 0 1rem;
+}
+.to-update {
+  color: $warning;
+}
