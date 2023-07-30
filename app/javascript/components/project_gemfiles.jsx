@@ -23,13 +23,18 @@ function ProjectGemfiles({ selectedProjectId, clickGem }) {
   return (
     <>
       <p className='header-container'>{icons.IconChartColumn} Gems scan</p>
-      <p>Used Gems: {totalGems}</p>
-      <p>Updatable: {updatableGems}</p>
+      <div className='gemfile-card'><i id='changelog-icon'>{icons.IconGem}</i>
+        <div className='gemfile-text'>
+          <h3>Used Gems:</h3>
+          <p>{totalGems}</p>
+          <h3>Updatable:</h3>
+          <p>{updatableGems}</p>
+        </div>
+      </div>
       <ul>
         {gems.map((gem) => (
           <li key={gem.id} onClick={() => clickGem(gem.id)}>
-            {gem.name} - {gem.status}
-            {icons.IconCircleCheck}
+            <div className='project-card project-infos gemlist'>{gem.name}{gem.status === 'Updatable' ? icons.IconWrench : icons.IconCircleCheck}</div>
           </li>
         ))}
       </ul>
