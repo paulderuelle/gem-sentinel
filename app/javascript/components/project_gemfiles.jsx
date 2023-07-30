@@ -35,8 +35,7 @@ function ProjectGemfiles({ projectId, projectGemfileId, clickGem }) {
         {gems.map((gem) => (
           <li key={gem.id} onClick={() => clickGem()}>
             {gem.name} - {gem.status}
-            {icons.IconCheck}
-            {icons.IconTimes}
+            {icons.IconCircleCheck}
           </li>
         ))}
       </ul>
