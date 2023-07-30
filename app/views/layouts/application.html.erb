@@ -13,14 +13,16 @@
   </head>
 
   <body>
-    <div class="header">
-    <%= render 'shared/banner' %>
-    </div>
-    <div class="content">
+    <header>
+      <%= render 'shared/banner' %>
+    </header>
+
+    <main>
       <%= yield %>
-    </div>
-    <div class="footer">
+    </main>
+
+    <footer>
       <%= render 'shared/footer' %>
-    </div>
+    </footer>
   </body>
 </html>
