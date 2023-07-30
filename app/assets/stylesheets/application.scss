@@ -19,7 +19,7 @@
 @import 'variables';
 @import 'index';
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -38,13 +38,13 @@ body {
   margin: 0;
 }
 
-.content {
+main {
   width: 90vw;
   padding: 2rem;
   width: 100%;
   overflow-y: scroll;
 }
 
-.header {
+header {
   width: 100vw;
 }
