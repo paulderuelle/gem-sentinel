@@ -18,3 +18,28 @@
 
 @import 'variables';
 @import 'index';
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: $third-color;
+  background-color: $fourth-color;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100vw;
+  justify-content: space-between;
+  height: 100vh;
+  margin: 0;
+}
+
+.content {
+  width: 90vw;
+  padding: 2rem;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.header {
+  width: 100vw;
+}
