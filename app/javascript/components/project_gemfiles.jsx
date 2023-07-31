@@ -38,13 +38,19 @@ function ProjectGemfiles({ selectedProjectId, clickGem }) {
           </li>
         ))}
       </ul>
-      <form action={`/api/v1/projects/${selectedProjectId}`} method="post">
-        <input type="hidden" name="_method" value="put" />
-        <label htmlFor="project_gemfile[content]">Bundle list content:
-          <textarea name="project_gemfile[content]" id="project_gemfile_content"></textarea>
-        </label>
-        <input type="submit" value="Update"></input>
-      </form>
+      <div id="update-project-form-container">
+        <form action={`/api/v1/projects/${selectedProjectId}`} method="post">
+          <input type="hidden" name="_method" value="put" />
+          <div className="field">
+            <label htmlFor="project_gemfile[content]">Bundle list content:
+              <textarea name="project_gemfile[content]" id="project_gemfile_content"></textarea>
+            </label>
+          </div>
+          <div className="field">
+            <input type="submit" value="Update"></input>
+          </div>
+        </form>
+      </div>
     </>
   );
 }
