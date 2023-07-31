@@ -11,8 +11,6 @@ GemSentinel is a powerful web application that helps developers track updates an
 
 **Website**: [https://gemsentinel.com](https://gemsentinel.com)
 
-<img width="1910" alt="Capture" src="https://github.com/Peuf54/GemSentinel.com/assets/113709332/b95da8f7-16df-4417-a1ec-e5fe4ad63b08">
-
 ## Features
 - Modern user interface powered by React and JavaScript. 💻🌐
 - RESTful API for smooth data retrieval and manipulation. 🚀⏰
@@ -44,6 +42,10 @@ To contribute to GemSentinel, follow these steps:
 3. Make your changes and commit them: `git commit -m "Add your commit message"`
 4. Push your changes to your forked repository: `git push origin feature/your-feature-name`
 5. Create a pull request to the main repository.
+
+**Website**: [https://gemsentinel.com](https://gemsentinel.com)
+
+<img width="1910" alt="Capture" src="https://github.com/Peuf54/GemSentinel.com/assets/113709332/b95da8f7-16df-4417-a1ec-e5fe4ad63b08">
 
 ## License
 GemSentinel is open-source and released under the [MIT License](LICENSE).
