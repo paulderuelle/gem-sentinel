@@ -11,7 +11,7 @@ GemSentinel is a powerful web application that helps developers track updates an
 
 **Website**: [https://gemsentinel.com](https://gemsentinel.com)
 
-![GemSentinel Screenshot](path_to_your_gem_sentinel_screenshot.png)
+<img width="1902" alt="entry-screenshot" src="https://github.com/Peuf54/GemSentinel.com/assets/113709332/c56036b7-2da6-4f2b-bd83-d1c40cafdf7c">
 
 ## Features
 - Modern user interface powered by React and JavaScript. 💻🌐
@@ -23,8 +23,6 @@ GemSentinel is a powerful web application that helps developers track updates an
 - PostgreSQL database for robust and reliable data management. 🗄
 
 ![logo - Copie](https://github.com/Peuf54/GemSentinel.com/assets/113709332/30ec593a-ffbc-4a9d-adda-5960342989f4)
-
-<img width="1902" alt="entry-screenshot" src="https://github.com/Peuf54/GemSentinel.com/assets/113709332/62c9f642-e92a-4672-ab5e-0b68dd61da62">
 
 ## Deployment
 GemSentinel is hosted on [Digital Ocean](https://www.digitalocean.com/) and managed by [Hatchbox](https://www.hatchbox.io/), ensuring a seamless deployment process.
