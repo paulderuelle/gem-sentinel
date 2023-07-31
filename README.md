@@ -11,7 +11,7 @@ GemSentinel is a powerful web application that helps developers track updates an
 
 **Website**: [https://gemsentinel.com](https://gemsentinel.com)
 
-<img width="1902" alt="entry-screenshot" src="https://github.com/Peuf54/GemSentinel.com/assets/113709332/c56036b7-2da6-4f2b-bd83-d1c40cafdf7c">
+<img width="1910" alt="Capture" src="https://github.com/Peuf54/GemSentinel.com/assets/113709332/b95da8f7-16df-4417-a1ec-e5fe4ad63b08">
 
 ## Features
 - Modern user interface powered by React and JavaScript. 💻🌐
