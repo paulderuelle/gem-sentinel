@@ -22,9 +22,6 @@ GemSentinel is a powerful web application that helps developers track updates an
 
 ![logo - Copie](https://github.com/Peuf54/GemSentinel.com/assets/113709332/30ec593a-ffbc-4a9d-adda-5960342989f4)
 
-## Deployment
-GemSentinel is hosted on [Digital Ocean](https://www.digitalocean.com/) and managed by [Hatchbox](https://www.hatchbox.io/), ensuring a seamless deployment process.
-
 ## Getting Started
 To contribute to GemSentinel, follow these steps:
 
