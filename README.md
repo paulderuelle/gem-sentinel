@@ -24,6 +24,8 @@ GemSentinel is a powerful web application that helps developers track updates an
 
 ![logo - Copie](https://github.com/Peuf54/GemSentinel.com/assets/113709332/30ec593a-ffbc-4a9d-adda-5960342989f4)
 
+<img width="1902" alt="entry-screenshot" src="https://github.com/Peuf54/GemSentinel.com/assets/113709332/62c9f642-e92a-4672-ab5e-0b68dd61da62">
+
 ## Deployment
 GemSentinel is hosted on [Digital Ocean](https://www.digitalocean.com/) and managed by [Hatchbox](https://www.hatchbox.io/), ensuring a seamless deployment process.
 
@@ -38,16 +40,12 @@ To contribute to GemSentinel, follow these steps:
 6. Run the Rails server: `rails s` and the React development server: `rails start`.
 7. Access GemSentinel at `http://localhost:3000`.
 
-Step by Step Guide
-
 ## How to Contribute
 1. Fork the repository.
 2. Create a new branch: `git checkout -b feature/your-feature-name`
 3. Make your changes and commit them: `git commit -m "Add your commit message"`
 4. Push your changes to your forked repository: `git push origin feature/your-feature-name`
 5. Create a pull request to the main repository.
-
-Contributors
 
 ## License
 GemSentinel is open-source and released under the [MIT License](LICENSE).
