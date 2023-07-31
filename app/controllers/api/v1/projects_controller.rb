@@ -7,7 +7,7 @@ class Api::V1::ProjectsController < ApplicationController
   def create
     project_params = params.require(:project).permit(:name)
     project_gemfile_params = params.require(:project_gemfile).permit(:content)
-    project = ProjectCreationService.create_with_gemfile(project_params, project_gemfile_params, current_user)
+    project = ProjectManagementService.create_with_gemfile(project_params, project_gemfile_params, current_user)
 
     if project.persisted?
       # Gérer la redirection ou la réponse en cas de succès
