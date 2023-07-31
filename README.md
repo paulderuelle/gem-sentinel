@@ -37,7 +37,7 @@ To contribute to GemSentinel, follow these steps:
 3. Install JavaScript dependencies: `yarn install`
 4. Configure the PostgreSQL database.
 5. Set up environment variables as needed.
-6. Run the Rails server: `rails s` and the React development server: `rails start`.
+6. Run the Rails server: `rails s` or `dev` to keep up to date.
 7. Access GemSentinel at `http://localhost:3000`.
 
 ## How to Contribute
